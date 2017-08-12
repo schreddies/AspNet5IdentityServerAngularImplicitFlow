@@ -14,6 +14,7 @@ export class ConfigService {
     get apiFileServer() {
         return this.getProperty('apiFileServer');
     }
+
     constructor(private http: Http) {
     }
 
