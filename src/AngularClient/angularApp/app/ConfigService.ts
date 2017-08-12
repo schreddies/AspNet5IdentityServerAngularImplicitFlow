@@ -7,10 +7,13 @@ import { Observable } from 'rxjs/Observable';
 export class ConfigService {
     private config: any;
 
-    get apiRoot() {
-        return this.getProperty('apiRoot'); // <--- THIS GETS CALLED FIRST
+    get apiServer() {
+        return this.getProperty('apiServer');
     }
 
+    get apiFileServer() {
+        return this.getProperty('apiFileServer');
+    }
     constructor(private http: Http) {
     }
 
@@ -31,8 +34,7 @@ export class ConfigService {
         }
 
         if (!this.config[property]) {
-            throw new Error(`Required property ${property} was not defined within the configuration object. Please double check the 
-      assets/config.json file`);
+            throw new Error(`Required property ${property} was not defined within the configuration object. Please double check the assets/config.json file`);
         }
 
         return this.config[property];

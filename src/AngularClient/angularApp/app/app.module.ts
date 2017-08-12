@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { Configuration } from './app.constants';
 import { routing } from './app.routes';
 import { HttpModule, JsonpModule, Http } from '@angular/http';
 
@@ -27,9 +26,7 @@ import { OpenIDImplicitFlowConfiguration } from './auth/modules/auth.configurati
 import { ConfigService } from './ConfigService';
 
 export function init(config: ConfigService) {
-    return () => {
-        config.load();
-    };
+    return () => config.load();
 }
 
 @NgModule({

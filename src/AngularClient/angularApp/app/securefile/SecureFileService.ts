@@ -2,8 +2,8 @@
 import { Http, Response, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
-import { Configuration } from '../app.constants';
 import { OidcSecurityService } from '../auth/services/oidc.security.service';
+import { ConfigService } from '../ConfigService';
 
 @Injectable()
 export class SecureFileService {
@@ -12,9 +12,9 @@ export class SecureFileService {
     private fileExplorerUrl: string;
     private headers: Headers;
 
-    constructor(private _http: Http, private _configuration: Configuration, private oidcSecurityService: OidcSecurityService) {
-        this.actionUrl = `${_configuration.FileServer}api/Download/`;
-        this.fileExplorerUrl = `${_configuration.FileServer }api/FileExplorer/`;
+    constructor(private _http: Http, private config: ConfigService, private oidcSecurityService: OidcSecurityService) {
+        this.actionUrl = `${config.apiFileServer}api/Download/`;
+        this.fileExplorerUrl = `${config.apiFileServer }api/FileExplorer/`;
     }
 
     public DownloadFile(id: string) {

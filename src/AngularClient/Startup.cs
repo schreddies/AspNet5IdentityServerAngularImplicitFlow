@@ -28,6 +28,7 @@ namespace AngularClient
         public void ConfigureServices(IServiceCollection services)
         {
             services.Configure<ClientAppSettings>(Configuration.GetSection("ClientAppSettings"));
+            services.AddMvc();
 
             services.AddCors(options =>
             {
@@ -76,6 +77,13 @@ namespace AngularClient
 
             app.UseDefaultFiles();
             app.UseStaticFiles();
+
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}");
+            });
 
             app.Run(async (context) =>
             {
