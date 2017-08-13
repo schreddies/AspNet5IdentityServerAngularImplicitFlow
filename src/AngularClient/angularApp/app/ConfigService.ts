@@ -18,14 +18,25 @@ export class ConfigService {
     constructor(private http: Http) {
     }
 
-    load(): Promise<any> {
-        console.log('get user called');
-        const promise = this.http.get(window.location.origin + window.location.pathname + '/api/ClientAppSettings').map((res) => res.json()).toPromise();
-        promise.then(config => {
-            this.config = config;     // <--- THIS RESOLVES AFTER
-            console.log(this.config);
+    //load(): Promise<any> {
+    //    console.log('get user called');
+    //    const promise = this.http.get(window.location.origin + window.location.pathname + '/api/ClientAppSettings').map((res) => res.json()).toPromise();
+    //    promise.then(config => {
+    //        this.config = config;     // <--- THIS RESOLVES AFTER
+    //        console.log(this.config);
+    //    });
+    //    return promise;
+    //}
+
+    loadConfigClient() : Observable<any> {
+
+        // console.log('window.location', window.location);
+        // console.log('window.location.href', window.location.href);
+        // console.log('window.location.origin', window.location.origin);
+
+        return this.http.get(window.location.origin + window.location.pathname + '/api/ClientAppSettings').map(res => {
+            this.config = res.json();
         });
-        return promise;
     }
 
     private getProperty(property: string): any {
