@@ -27,8 +27,12 @@ export class ConfigService {
     //    });
     //    return promise;
     //}
-
-    loadConfigClient() : Observable<any> {
+    load() {
+        this.loadConfigClient().subscribe(config => {
+            this.config = config;
+        });
+    }
+    loadConfigClient() {
 
         // console.log('window.location', window.location);
         // console.log('window.location.href', window.location.href);
