@@ -69,6 +69,13 @@ export class AppComponent implements OnInit, OnDestroy {
 
     logout() {
         console.log('start logoff');
+        let culture = 'de-CH';
+        if (this.locale.getCurrentCountry()) {
+            culture = this.locale.getCurrentLanguage() + '-' + this.locale.getCurrentCountry();
+        }
+
+        this.oidcSecurityService.setCustomLogoffParameters({ 'ui_locales': culture });
+
         this.oidcSecurityService.logoff();
     }
 
