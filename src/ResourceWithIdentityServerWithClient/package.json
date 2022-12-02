@@ -23,7 +23,7 @@
     "lint": "tslint ./angularApp"
   },
   "dependencies": {
-    "@angular-devkit/core": "0.7.0-beta.1",
+    "@angular-devkit/core": "0.7.0",
     "@angular/animations": "6.0.7",
     "@angular/common": "6.0.7",
     "@angular/compiler": "6.0.7",
